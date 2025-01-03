@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_search_clone/colors.dart';
+import 'package:google_search_clone/responsive/MobileScreens/home_page_screen.dart';
+import 'package:google_search_clone/responsive/WebScreens/home_page_web.dart';
+import 'package:google_search_clone/responsive/responsive_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +14,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Google Search',
-      home: Text('Flutter Demo Home Page'),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: backgroundColor,
+      ),
+      home: const ResponsiveLayoutScreen(
+          mobileScreenLayout: HomePageScreen(), webScreenLayout: HomePageWeb()),
     );
   }
 }
-
