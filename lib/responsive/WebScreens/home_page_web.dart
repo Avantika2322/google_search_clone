@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_search_clone/responsive/WebScreens/search_buttons.dart';
 import 'package:google_search_clone/responsive/WebScreens/search_ui_view.dart';
 import 'package:google_search_clone/responsive/WebScreens/translation_view.dart';
+import 'package:google_search_clone/responsive/WebScreens/web_footer.dart';
 
 class HomePageWeb extends StatelessWidget {
   const HomePageWeb({super.key});
@@ -87,6 +88,7 @@ class HomePageWeb extends StatelessWidget {
                       TranslationView()
                     ],
                   ),
+                  WebFooter()
                 ],
               ),
             ),
