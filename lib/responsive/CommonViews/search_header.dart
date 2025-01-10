@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_search_clone/colors.dart';
+import 'package:google_search_clone/responsive/CommonViews/search_screen.dart';
 
 class SearchHeader extends StatelessWidget {
   const SearchHeader({super.key});
@@ -30,18 +31,31 @@ class SearchHeader extends StatelessWidget {
               border: Border.all(color: searchColor)
             ),
             child: TextFormField(
+              onFieldSubmitted: (query){
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SearchScreen(
+                        searchQuery: query, start: '0'),
+                  ),
+                );
+              },
               style: const TextStyle(fontSize: 16),
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
-                suffixIcon: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset('assets/images/mic-icon.svg'),
-                    const SizedBox(width: 20,),
-                    const Icon(Icons.search, color: blueColor,),
-                    const SizedBox(width: 10,),
-                  ],
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Container(
+                    constraints: const BoxConstraints(maxWidth: 150,),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset('assets/images/mic-icon.svg'),
+                        const SizedBox(width: 20,),
+                        const Icon(Icons.search, color: blueColor,),
+                      ],
+                    ),
+                  ),
                 ),
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_search_clone/colors.dart';
 
+import '../CommonViews/search_screen.dart';
+
 class SearchUiView extends StatelessWidget {
   const SearchUiView({super.key});
 
@@ -24,6 +26,14 @@ class SearchUiView extends StatelessWidget {
         SizedBox(
           width: size.width>760 ? size.width * 0.5 : size.width* 0.8,
           child: TextFormField(
+            onFieldSubmitted: (query){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SearchScreen(
+                      searchQuery: query, start: '0'),
+                ),
+              );
+            },
             decoration: InputDecoration(
               border: const OutlineInputBorder(
                 borderSide: BorderSide(
